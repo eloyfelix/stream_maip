@@ -19,6 +19,7 @@ st.markdown(
     "Check the documentation [here](https://chembl.gitbook.io/malaria-project)."
 )
 
+
 @st.cache_resource(experimental_allow_widgets=True)
 def get_cookie_manager():
     return stx.CookieManager()
