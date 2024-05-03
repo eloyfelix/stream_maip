@@ -25,9 +25,6 @@ def get_cookie_manager():
     return stx.CookieManager()
 
 
-cookie_manager = get_cookie_manager()
-
-
 def run_predictions(file_content, file_name):
     data = {
         "standardise": True if standardise else False,
@@ -53,13 +50,15 @@ def check_job_status(job_id):
     return res_status
 
 
+cookie_manager = get_cookie_manager()
+
 with st.form(key="checkbox_form"):
     uploaded_file = st.file_uploader(
         "Upload a CSV file with a **id** and **smiles** columns", type="csv"
     )
     col1, col2 = st.columns(2)
-    standardise = col1.checkbox("standardise")
-    ignore_cache = col2.checkbox("ignore cache")
+    standardise = col1.checkbox("Standardise compounds")
+    ignore_cache = col2.checkbox("Ignore system's cache (re-calculate)")
     submit_button = st.form_submit_button(label="Submit")
 
 
